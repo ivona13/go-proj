@@ -1,4 +1,4 @@
-name: Release Go project
+name: Publish tag for Go module
 
 on:
   push:
