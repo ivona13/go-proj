@@ -23,7 +23,11 @@ jobs:
         with:
           go-version: 1.19
 
-      - name: Release
-        uses: codfish/semantic-release-action@v2.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+      - name: package-version-to-git-tag
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          github_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          version: "1.0.0"
+          git_tag_prefix: "v"
