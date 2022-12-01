@@ -17,3 +17,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
           WITH_V: true # create version with 'v' character
           DEFAULT_BUMP: patch # default is minor; to specify bumping major, minor or patch, include #major, #minor or #patch into commit message, respectively; if none specified, DEFAULT_BUMP applied
+
+      #try to install package indir
+      - name: test
+        working-directory: https://github.com/ivona13/go-proj
+        run: |
+          go version
+          go get -u golang.org/x/lint/golint
