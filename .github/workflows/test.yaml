@@ -28,5 +28,5 @@ jobs:
           event_type: update-repo-dependency
           repositories: |
             ivona13/go-test
-            user/repo2
+
           client_payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
