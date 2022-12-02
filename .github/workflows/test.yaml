@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -19,14 +20,12 @@ jobs:
           WITH_V: true # create version with 'v' character
           DEFAULT_BUMP: patch # default is minor; to specify bumping major, minor or patch, include #major, #minor or #patch into commit message, respectively; if none specified, DEFAULT_BUMP applied
 
-
       #try do dispatch event to other repositories
-      # - name: Repository Dispatch
-      #   uses: peter-evans/repository-dispatch@v2
-      #   env:
-      #     TAG: ${{ steps.bump_version_push_tag.outputs.tag }}
-      #   with:
-      #     token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-      #     repository: ivona13/go-test
-      #     event-type: update-repo-dependency
-      #     client-payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
+      - name: Repository Dispatch
+        uses: guilouro/multiple-repositories-dispatch@latest
+        with:
+          repo_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          repositories: |
+            ivona13/go-test
+          event-type: update-repo-dependency
+          client-payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
