@@ -22,7 +22,7 @@ jobs:
 
       #try do dispatch event to other repositories
       - name: Repository Dispatch
-        uses: guilouro/multiple-repositories-dispatch@latest
+        uses: guilouro/multiple-repositories-dispatch@v1
         with:
           repo_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
           repositories: |
