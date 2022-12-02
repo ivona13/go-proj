@@ -25,7 +25,7 @@ jobs:
         uses: guilouro/multiple-repositories-dispatch@v1.0.2
         with:
           repo_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-          repositories: |
-            ivona13/go-test
           event-type: update-repo-dependency
           client-payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
+          repositories: |
+            ivona13/go-test
