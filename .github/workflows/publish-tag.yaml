@@ -1,33 +1,33 @@
-name: Publish tag for Go module
+# name: Publish tag for Go module
 
-on:
-  push:
-    branches:
-      - main
-      - release/*
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#       - release/*
+#   pull_request:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    name: GoReleaser build
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     name: GoReleaser build
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Check out code into the Go module directory
+#         uses: actions/checkout@v3
 
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19
+#       - name: Set up Go
+#         uses: actions/setup-go@v3
+#         with:
+#           go-version: 1.19
 
-      - name: package-version-to-git-tag
-        uses: pkgdeps/git-tag-action@v2
-        with:
-          github_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-          github_repo: ${{ github.repository }}
-          git_commit_sha: ${{ github.sha }}
-          version: "1.0.0"
-          git_tag_prefix: "v"
+#       - name: package-version-to-git-tag
+#         uses: pkgdeps/git-tag-action@v2
+#         with:
+#           github_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+#           github_repo: ${{ github.repository }}
+#           git_commit_sha: ${{ github.sha }}
+#           version: "1.0.0"
+#           git_tag_prefix: "v"
