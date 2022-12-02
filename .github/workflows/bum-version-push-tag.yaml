@@ -21,12 +21,11 @@ jobs:
 
       #try do dispatch event to other repositories
       - name: Repository Dispatch
-        uses: guilouro/multiple-repositories-dispatch@latest
+        uses: peter-evans/repository-dispatch@v2
         env:
           TAG: ${{ steps.bump_version_push_tag.outputs.tag }}
         with:
-          repo_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          repository: ivona13/go-test
           event-type: update-repo-dependency
-          repositories: |
-            ivona13/go-test
           client-payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
