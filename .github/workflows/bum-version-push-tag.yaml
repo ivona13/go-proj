@@ -26,6 +26,7 @@ jobs:
           TAG: ${{ steps.bump_version_push_tag.outputs.tag }}
         with:
           token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-          repository: ivona13/go-test
           event-type: update-repo-dependency
+          repositories: |
+            ivona13/go-test
           client-payload: '{"ref": "${{ steps.bump_version_push_tag.outputs.tag }}"}'
