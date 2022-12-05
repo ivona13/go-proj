@@ -20,6 +20,13 @@ jobs:
           WITH_V: true # create version with 'v' character
           DEFAULT_BUMP: patch # default is minor; to specify bumping major, minor or patch, include #major, #minor or #patch into commit message, respectively; if none specified, DEFAULT_BUMP applied
 
+      - name: List repos
+        id: list_org_repos
+        uses: actions/get-organization-repositories@v1
+        with:
+          github-organization: "ivona13"
+      - run: echo ${{ steps.list_org_repos.output.repositories }}
+
       #try do dispatch event to other repositories
       - name: Repository Dispatch
         uses: guilouro/multiple-repositories-dispatch@v1.0.2
