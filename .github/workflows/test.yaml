@@ -24,7 +24,7 @@ jobs:
         id: list_org_repos
         uses: denis-tingaikin/get-organization-repositories@v1
         with:
-          github-organization: ${{ context.repo.owner }}
+          github-organization: ${{ github.repo.owner }}
       - run: echo ${{ steps.list_org_repos.output.repositories }}
 
       #try do dispatch event to other repositories
