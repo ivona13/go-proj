@@ -22,7 +22,7 @@ jobs:
 
       - name: List repos
         id: list_org_repos
-        uses: actions/get-organization-repositories@v1
+        uses: denis-tingaikin/get-organization-repositories@v1
         with:
           github-organization: "ivona13"
       - run: echo ${{ steps.list_org_repos.output.repositories }}
