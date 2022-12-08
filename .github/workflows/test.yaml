@@ -34,4 +34,4 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'go-remote-runner-wrapper-build')
         id: branch-name
         uses: tj-actions/branch-names@v6
-      - run: echo ${{ (github.event.pull_request }}
+      - run: echo ${{ github.event.pull_request }}
